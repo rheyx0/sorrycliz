@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I’m Sorry Cliz</title>
+    <style>
+        /* 🌸 Overall Page Style */
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #fde2e4, #cde8f5);
+            font-family: "Poppins", sans-serif;
+            color: #555;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 💗 Header Bar */
+        header {
+            width: 100%;
+            background: rgba(255, 240, 245, 0.8);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 10px rgba(255, 182, 193, 0.4);
+            text-align: center;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #ff8fab;
+            text-shadow: 1px 1px 5px rgba(255, 192, 203, 0.4);
+            letter-spacing: 1.5px;
+        }
+
+        /* 🩷 Forgive Section */
+        .forgive {
+            text-align: center;
+            margin-top: 100px;
+            animation: fadeIn 1.2s ease-in-out;
+            z-index: 10;
+        }
+
+        .forgive h2 {
+            color: #ff8fab;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        /* 💞 GIF */
+        .gif img {
+            width: 250px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(255, 182, 193, 0.5);
+        }
+
+        /* 💞 Buttons */
+        .buttons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+        }
+
+        .buttons button {
+            background-color: #ffc6d9;
+            color: #555;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: 0.3s;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .buttons button:hover {
+            background-color: #ffafcc;
+            transform: scale(1.07);
+        }
+
+        /* ✨ Fade Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 💖 Floating Hearts Animation */
+        .heart {
+            position: absolute;
+            width: 40px; /* made bigger */
+            height: 40px; /* made bigger */
+            background: url('heart.png') no-repeat center/contain;
+            opacity: 0.9;
+            animation: floatUp 8s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0.8);
+                opacity: 0;
+            }
+            20% { opacity: 1; }
+            100% {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>I’M SORRY CLIZ</h1>
+    </header>
+
+    <!-- Floating Hearts (Left & Right Sides) -->
+    <div id="hearts"></div>
+
+    <div class="forgive">
+        <h2>Forgive Rhey?</h2>
+
+        <div class="gif">
+            <img src="sorry.gif" alt="Cute sorry gif">
+        </div>
+
+        <div class="buttons">
+            <button id="yesBtn">YES</button>
+            <button id="noBtn">NO</button>
+        </div>
+    </div>
+
+    <script>
+        // 💕 Floating Hearts Generator
+        const heartsContainer = document.getElementById('hearts');
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+
+            // Random position across both sides
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.animationDuration = (6 + Math.random() * 4) + 's';
+            heart.style.transform = `scale(${0.7 + Math.random() * 0.6})`;
+
+            heartsContainer.appendChild(heart);
+
+            // Remove after animation
+            setTimeout(() => heart.remove(), 10000);
+        }
+
+        // Create hearts every 300ms
+        setInterval(createHeart, 300);
+
+        // 💞 Button actions
+        document.getElementById('yesBtn').addEventListener('click', () => {
+            window.location.href = 'camera.html';
+        });
+
+        document.getElementById('noBtn').addEventListener('click', () => {
+                window.location.href = 'no.html'; // 👈 redirect to the "sad gif" page
+        });
+    </script>
+</body>
+</html>
